@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Фотографии♡</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="photos-page">
+
+    <header>
+        <div class="logo">♡</div>
+        <nav>
+            <a href="/">Главная</a>
+            <a href="/about">Love Story</a>
+            <a href="/photos">Фотографии♡</a>
+        </nav>
+    </header>
+
+    <main>
+        <p class="label">ВОСПОМИНАНИЯ</p>
+
+        <h1>
+            Наши <span>моменты</span>
+        </h1>
+
+<!-- Сетка под фотографии с подписями -->
+<div class="photo-grid">
+
+    <div class="photo-item">
+        <div class="photo-card">
+            <img src="{{ url_for('static', filename='photo1.jpg') }}" alt="Фото">
+        </div>
+        <div class="photo-caption">
+            Это наши первые сообщения в чате
+        </div>
+    </div>
+
+    <div class="photo-item">
+        <div class="photo-card">
+            <img src="{{ url_for('static', filename='photo2.jpg') }}" alt="Фото">
+        </div>
+        <div class="photo-caption">
+            Тут мы начали встречаться
+        </div>
+    </div>
+
+    <div class="photo-item">
+        <div class="photo-card">
+            <img src="{{ url_for('static', filename='photo3.jpg') }}" alt="Фото">
+        </div>
+        <div class="photo-caption">
+            Наши первые "Люблю"
+        </div>
+    </div>
+
+    <div class="photo-item">
+        <div class="photo-card">
+            <img src="{{ url_for('static', filename='photo4.jpg') }}" alt="Фото">
+        </div>
+        <div class="photo-caption">
+            Вайбово жарим шашлыки
+        </div>
+    </div>
+
+        <div class="photo-item">
+        <div class="photo-card">
+            <img src="{{ url_for('static', filename='photo5.jpg') }}" alt="Фото">
+        </div>
+        <div class="photo-caption">
+            Ножка твоя
+        </div>
+    </div>
+
+        <div class="photo-item">
+        <div class="photo-card">
+            <img src="{{ url_for('static', filename='photo6.jpg') }}" alt="Фото">
+        </div>
+        <div class="photo-caption">
+            Мы
+        </div>
+    </div>
+
+        <div class="photo-item">
+        <div class="photo-card">
+            <img src="{{ url_for('static', filename='photo7.jpg') }}" alt="Фото">
+        </div>
+        <div class="photo-caption">
+           Целуемся)
+        </div>
+    </div>
+
+        <div class="photo-item">
+        <div class="photo-card">
+            <img src="{{ url_for('static', filename='photo8.jpg') }}" alt="Фото">
+        </div>
+        <div class="photo-caption">
+            Тоже мы
+        </div>
+    </div>
+
+        <div class="photo-item">
+        <div class="photo-card">
+            <img src="{{ url_for('static', filename='photo9.jpg') }}" alt="Фото">
+        </div>
+        <div class="photo-caption">
+            Моя бусинка с цветочками
+        </div>
+    </div>
+
+        <div class="photo-item">
+        <div class="photo-card">
+            <img src="{{ url_for('static', filename='photo10.jpg') }}" alt="Фото">
+        </div>
+        <div class="photo-caption">
+            Тоже моя бусинка(одно из любимых фото кстати)
+        </div>
+    </div>
+
+        <div class="photo-item">
+        <div class="photo-card">
+            <img src="{{ url_for('static', filename='photo11.jpg') }}" alt="Фото">
+        </div>
+        <div class="photo-caption">
+           МЫ
+        </div>
+    </div>
+
+        <div class="photo-item">
+        <div class="photo-card">
+            <img src="{{ url_for('static', filename='photo12.jpg') }}" alt="Фото">
+        </div>
+        <div class="photo-caption">
+            Это же твой любимый парень кривляется на камеру
+        </div>
+    </div>
+
+        <div class="photo-item">
+        <div class="photo-card">
+            <img src="{{ url_for('static', filename='photo13.jpg') }}" alt="Фото">
+        </div>
+        <div class="photo-caption">
+           Ой тут тоже корчит
+        </div>
+    </div>
+
+        <div class="photo-item">
+        <div class="photo-card">
+            <img src="{{ url_for('static', filename='photo14.jpg') }}" alt="Фото">
+        </div>
+        <div class="photo-caption">
+            Тут уже светленькая)))
+        </div>
+    </div>
+
+        <div class="photo-item">
+        <div class="photo-card">
+            <img src="{{ url_for('static', filename='photo15.jpg') }}" alt="Фото">
+        </div>
+        <div class="photo-caption">
+            Тоже одна из любимых твоих фото
+        </div>
+    </div>
+
+</div>
+
+        <a class="button" href="/">← На главную</a>
+    </main>
+
+    <footer>
+        © С любовью, твой Тёма
+    </footer>
+
+<!-- Модальное окно для полного просмотра фото -->
+    <div id="photo-modal" class="modal">
+        <span class="modal-close">&times;</span>
+        <img class="modal-content" id="modal-img" alt="Увеличенное фото">
+    </div>
+
+    <!-- Скрипт для открытия и закрытия -->
+    <script>
+        const modal = document.getElementById('photo-modal');
+        const modalImg = document.getElementById('modal-img');
+        const closeBtn = document.querySelector('.modal-close');
+
+        // Вешаем клик на все фотографии в галерее
+        document.querySelectorAll('.photo-card img').forEach(img => {
+            img.addEventListener('click', () => {
+                modal.style.display = 'flex';
+                modalImg.src = img.src;
+            });
+        });
+
+        // Закрытие по клику на крестик
+        closeBtn.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+
+        // Закрытие по клику на любой темный фон вокруг фото
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
+
+</body>
+</html>
